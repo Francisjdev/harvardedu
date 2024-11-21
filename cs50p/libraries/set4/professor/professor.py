@@ -5,7 +5,7 @@ score=0
 def main():
     get_level()
     solve_problems(problems,score)
-    print(score)
+    
 def get_level():
     try:
         digits = int(input("Level: "))
@@ -29,36 +29,39 @@ def random_with_N_digits(n):
     return prob 
     
 def generate_problems(digit):
-    for problem in range(10):
+    for i in range(10):
       problems.append(random_with_N_digits(digit)) 
     
     print(problems) 
     return problems
 
-def solve_problems(arr,tracker):
+def solve_problems(arr,score):
     for prob in arr:
         num1,num2 = prob.split("+")
         results=int(num1)+int(num2)
         print(prob)
-        tracker =get_answer(results,tracker)
-    return tracker
+        score +=get_answer(results)
 
-def get_answer(a,tracker):
+    print(f"the score is: {score}")
+    
+
+def get_answer(a):
     x=0
     while True:
        
         answer = int(input("answer: "))
         if answer == a:
-                tracker +=1
+                b = 1
                 break
         else:
                 print("EEE")
                 x+=1
                 print(x)
                 if x==3:
+                    b=0
                     print(f"the answer is : {a}")
                     break
-        return tracker
+    return b
     
 
 
